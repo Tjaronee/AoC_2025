@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 
 
-def get_input(day: int, as_lines: bool = True):
+def get_input(day: int, as_lines: bool = True, example: bool = False):
     """
     Read the input file for a given day.
     
@@ -21,12 +21,12 @@ def get_input(day: int, as_lines: bool = True):
     """
     # Get the project root (parent of utils)
     project_root = Path(__file__).parent.parent
-    input_file = project_root / "inputs" / f"day{day:02d}.txt"
+    input_file = project_root / "inputs" / f"day{day:02d}{'_example' if example else ''}.txt"
     
     if not input_file.exists():
         raise FileNotFoundError(
             f"Input file not found: {input_file}\n"
-            f"Please create the file at: inputs/day{day:02d}.txt"
+            f"Please create the file at: inputs/day{day:02d}{'_example' if example else ''}.txt"
         )
     
     with open(input_file, 'r', encoding='utf-8') as f:

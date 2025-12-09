@@ -1,6 +1,6 @@
 from pathlib import Path
 
-def getInput(day):
+def getInput(day, example=False):
     """Load input data for a specific day.
     
     Args:
@@ -11,7 +11,7 @@ def getInput(day):
     """
     # Navigate from src/aoc_utils/ up to project root, then to Inputs/
     project_root = Path(__file__).parent.parent.parent
-    path = project_root / 'Inputs' / f'Day{day}.txt'
+    path = project_root / 'Inputs' / f'Day{day}{"_example" if example else ""}.txt'
     
     with open(path, 'r') as f:
         data = f.read().splitlines()
